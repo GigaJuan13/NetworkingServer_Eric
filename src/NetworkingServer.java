@@ -1,5 +1,6 @@
 /* SERVER - may be enhanced to work for multiple clients */
 import java.io.IOException;
+import java.io.InputStream;
 import java.net. *;
 
 public class NetworkingServer {
@@ -27,6 +28,18 @@ public class NetworkingServer {
         while (true){
             try {
                 // Listens for a connection to be made to
+                // this socket and accepts it. The method blocks until
+                // a connection is made
+                System.out.println("Waiting for connect request...");
+                client = server.accept();
+
+                System.out.println("Connect request is accepted...");
+                String clientHost = client.getInetAddress().getHostAddress();
+                int clientPort = client.getPort();
+                System.out.println("Client host = " + clientHost + " Client port = " + clientPort);
+
+                // Read data from the client
+                InputStream clientIn = client.getInputStream();
             }
         }
     }
