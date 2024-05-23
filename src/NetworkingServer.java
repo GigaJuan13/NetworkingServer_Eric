@@ -54,7 +54,12 @@ public class NetworkingServer {
                 // Close sockets
                 if (msgFromClient != null && msgFromClient.equalsIgnoreCase("bye")){
                     server.close();
+                    client.close();
+                    break;
                 }
+            }
+            catch (IOException ie){
+                // Skriv ett lämpligt error meddelande
             }
         }
     }
